@@ -22,8 +22,8 @@ volatile unsigned char *pin_b = (unsigned char *)0x23; /* direccion PIN B (regis
 
 void led_init(void)
 {
-	volatile unsigned char *DDR_B = 0x24;  // Direccion de DDRB
-	volatile unsigned char *PORT_B = 0x25; // Direccion de PORTB
+	volatile unsigned char *DDR_B = (unsigned char *)0x24;	// Direccion de DDRB
+	volatile unsigned char *PORT_B = (unsigned char *)0x25; // Direccion de PORTB
 
 	*PORT_B = *PORT_B & ~LED_ROJO; // Coloca 0 en el bit 5 de PORTB
 	*DDR_B = *DDR_B | LED_ROJO;	   // Coloca 1 en el bit 5 de DDRB
@@ -33,7 +33,7 @@ void led_init(void)
 
 void led_toggle(void)
 {
-	volatile unsigned char *PORT_B = 0x25; // Direccion de PORTB
+	volatile unsigned char *PORT_B = (unsigned char *)0x25; // Direccion de PORTB
 	unsigned char status;
 
 	status = *PORT_B;			// status almacena el estado actual del led
