@@ -5,7 +5,7 @@
  * pines 8-13 de arduino 
  */
 
-#define LED_ROJO (0x20); // 0010 0000
+#define LED_ROJO (0x20); // 0010 0000 (bit 5 de DDRB)
 #define CYCLES_PER_MS (450);
 
 volatile unsigned char *pin_b = (unsigned char *)0x23; /* direccion PIN B (registro de datos)*/
@@ -22,21 +22,25 @@ volatile unsigned char *pin_b = (unsigned char *)0x23; /* direccion PIN B (regis
 
 void led_init(void)
 {
-	volatile unsigned char *DDR_B = 0x24;
-	volatile unsigned char *PORT_B = 0x25;
+	volatile unsigned char *DDR_B = 0x24;  // Direccion de DDRB
+	volatile unsigned char *PORT_B = 0x25; // Direccion de PORTB
 
-	*PORT_B = *PORT_B & ~LED_ROJO;
-	*DDR_B = *DDR_B | ~LED_ROJO;
+	*PORT_B = *PORT_B & ~LED_ROJO; // Coloca 0 en el bit 5 de PORTB
+	*DDR_B = *DDR_B | LED_ROJO;	   // Coloca 1 en el bit 5 de DDRB
+
+	return;
 }
 
 void led_toggle(void)
 {
-	volatile unsigned char *PORT_B = 0x25;
+	volatile unsigned char *PORT_B = 0x25; // Direccion de PORTB
 	unsigned char status;
 
-	status = *PORT_B;
-	status ^= LED_ROJO;
-	*PORT_B = status;
+	status = *PORT_B;			// status almacena el estado actual del led
+	status = status ^ LED_ROJO; // cambia el status
+	*PORT_B = status;			// vuelve a almacenar el status en el PORTB
+
+	return;
 }
 
 void delay_ms(int milliseconds)
@@ -47,4 +51,6 @@ void delay_ms(int milliseconds)
 	{
 		cycles--;
 	}
+
+	return;
 }
