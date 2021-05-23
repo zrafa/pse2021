@@ -1,9 +1,9 @@
-CC=avr-gcc
-OBJETOS=src/main.o src/utils.o
-APP=led-test
-CFLAGS=-Os -DF_CPU=16000000UL -mmcu=atmega328p 
-LDFLAGS=-mmcu=atmega328p
-FIRMWARE=imagen.hex
+CC = avr-gcc
+APP = led-test
+CFLAGS = -Os -DF_CPU=16000000UL -mmcu=atmega328p 
+LDFLAGS = -mmcu=atmega328p
+FIRMWARE = imagen.hex
+OBJETOS = main.o utils.o
 
 # $@:Se sustituye por el nombre del objetivo de la presente regla.
 # $*:Se sustituye por la raíz de un nombre de fichero.
