@@ -6,7 +6,7 @@
  */
 
 #define LED_ROJO (0x20); // 0010 0000 (bit 5 de DDRB)
-#define CYCLES_PER_MS (450);
+#define CYCLES_PER_MS (200);
 
 volatile unsigned char *pin_b = (unsigned char *)0x23; /* direccion PIN B (registro de datos)*/
 
@@ -45,7 +45,7 @@ void led_toggle(void)
 
 void delay_ms(int milliseconds)
 {
-	volatile unsigned long cycles = milliseconds * CYCLES_PER_MS;
+	volatile long long cycles = (long long)milliseconds * CYCLES_PER_MS;
 
 	while (cycles != 0)
 	{
