@@ -2,4 +2,66 @@
 
 \begin{enumerate}
       \item
+            \begin{enumerate}[label=\arabic*]
+                  \item El led integrado esta conectado al pin 13 de la placa pro mini.
+                  \item El led integrado esta conectado al pin PB5 del microcontrolador.
+            \end{enumerate}
+      \item \textit{Ver src/knight\_raider}
+      \item
+            Desamblado de la sección .text:
+
+            \vspace{0.3cm}
+
+            00000000 <\_\_vectors>:
+
+            \quad 0: \quad 0c 94 34 00 \quad jmp \quad 0x68 \quad	; 0x68 <\_\_ctors\_end>
+
+            \quad 4: \quad 0c 94 51 00 \quad jmp \quad 0xa2	\quad ; 0xa2 <\_\_bad\_interrupt>
+
+            \quad 8: \quad 0c 94 51 00 \quad jmp \quad 0xa2	\quad ; 0xa2 <\_\_bad\_interrupt>
+
+            \quad c: \quad 0c 94 51 00 \quad jmp \quad 0xa2	\quad ; 0xa2 <\_\_bad\_interrupt>
+
+            \quad 10: \quad 0c 94 51 00 \quad jmp \quad 0xa2 \quad ; 0xa2 <\_\_bad\_interrupt>
+
+            \quad 14: \quad 0c 94 51 00 \quad jmp \quad 0xa2 \quad ; 0xa2 <\_\_bad\_interrupt>
+
+            \quad 18: \quad 0c 94 51 00 \quad jmp \quad 0xa2 \quad ; 0xa2 <\_\_bad\_interrupt>
+
+            \quad 1c: \quad 0c 94 51 00 \quad jmp \quad 0xa2 \quad ; 0xa2 <\_\_bad\_interrupt>
+
+            \quad 20: \quad 0c 94 51 00 \quad jmp \quad 0xa2 \quad ; 0xa2 <\_\_bad\_interrupt>
+
+            \quad 24: \quad 0c 94 51 00 \quad jmp \quad 0xa2 \quad ; 0xa2 <\_\_bad\_interrupt>
+      \item
+            \begin{enumerate}
+                  \item
+                        El hardware que tienen los dispositivos son los pines GPIO (General Purpose Input/Output).
+
+                  \item
+                        Los pines de E/S en el PORT B se llaman PB1, PCB2, PB3, PB4 y PB5.
+
+                  \item
+                        Los dispositivos de E/S son:
+
+                        \begin{itemize}
+                              \item Los pines de entrada/salida digitales (del 0 al 13)
+                              \item Los pines de entrada analógicos (A0, A1, A2 y A3)
+                              \item Puertos de serie TTL (GND, VCC, RX, TX)
+                              \item Alimentación y GND
+                              \item Alimentación no regulada (RAW)
+                        \end{itemize}
+
+                  \item
+                        Para controlar un dispositivo de E/S se necesita conocer el recorrido de las conexión desde el dispositivo hasta el microcontrolador que se puede obtener en el esquematico de la placa. También es necesario conocer que pines controlan al dispositivo y a que bits de los registros estan mapeados que se pueden obtener en el manual del microcontrolador.
+
+                  \item
+                        El voltaje es una magnitud física que cuantifica la diferencia de potencial electrico entre dos puntos.
+
+                        La corriente es el flujo de partículas cargadas que se mueven a través de un conductor electico o un espacio.
+
+                  \item
+                        Las \textbf{Arquitecturas Harvard} posee pistas de almacenamiento y de señal fisicamente separadas para las instrucciones y para los datos. Los microcontroladores AVR tienen una memoria flash para almacenar el programa y una memoría para los datos (SRAM). Al estas separadas las memorias pueden diferir en el ancho de bits y permite el paralelismo así como que se obtengan antes de que se necesiten.
+            \end{enumerate}
+
 \end{enumerate}

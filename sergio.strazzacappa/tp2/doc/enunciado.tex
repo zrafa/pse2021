@@ -18,4 +18,39 @@
                   \item ¿A que pin de la placa pro mini está conectado el led?
                   \item A que pin del microcontrolador \textbf{AVR} esta conectado el led?
             \end{enumerate}
+
+      \item
+            Crear una segunda aplicación para \textbf{AVR} que controle 5 pines de E/S digital paralela del atmega328p (GPIO).
+
+            \vspace{0.3cm}
+
+            El hardware a utilizar son 5 \textbf{LEDs} para \textbf{SALIDA}. Todo el hardware debe ser controlado por pines conectados al periférico de E/S \textit{GPIO PORTB}.
+
+            \vspace{0.3cm}
+
+            \textbf{Software: } Escriba un programa que realice el efecto del \textit{knight-rider}, utilizando los 5 leds.
+
+      \item
+            Utilice \textbf{avr-objdump} para realizar un decodificado del programa binario elf (obtener el código en lenguaje ensamblador AVR a partir del binario elf). Observe ahora que al compilar el programa para un microcontrolador particular aparece al principio del código la tabla de vectores.
+
+            \vspace{0.3cm}
+
+            Presente en este ejercicio las primeras 10 posiciones de la tabla de vectores.
+
+      \item
+            Responder:
+            \begin{enumerate}
+                  \item ¿Qué hw existe en cada dispositivo de E/S que permite su programación?
+                  \item ¿Cómo se llaman en el PORT B del AVR?
+                  \item ¿Cuantos dispositivos de E/S observa conectados al DATABUS del AVR? Mencione sus nombres
+                  \item Usted debe controlar un nuevo dispositivo de E/S en un sistema, utilizando un programa escrito en C. ¿Que detalles necesita conocer para escribir el software? ¿De dónde obtiene los detalles?
+                  \item ¿Qué es el voltaje? ¿Qué es la corriente?
+                  \item ¿Por qué se lo clasifica como \textit{arquitectura harvard} a los micros AVR de 8-bits?
+            \end{enumerate}
 \end{enumerate}
+
+\textbf{Verificación: } Compilar, vincular y enviar el firmware a cada AVR.
+
+\vspace{0.3cm}
+
+\textbf{Entrega: } Subir (push) el trabajo práctico resuelto (o sus versiones intermedias) al repositorio git compartido.
