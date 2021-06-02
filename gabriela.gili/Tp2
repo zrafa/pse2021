@@ -1,16 +1,27 @@
 1) 
 
-El led está conectado al pin 13 de la placa pro mini
+El led está conectado al pin 13 de la placa pro mini. 
 
 4)
 
 a) En cada dispositivo de E/S existen los registros de configuración que permiten su programación. Los registros serán utilizados para establecer como la 
 aplicación utilizará cada pin especifico de un puerto. 
 
-b) 
+b) DDRB --> Determina si un bit es de entrada o de salida
+   PORTB--> Controla si el pin está en HIGH/LOW
+   PINB --> Permite leer el estado de los pines de un puerto
 
-c)
+c) Los dispositivos de e/s conectados al DATABUS del AVR son: PORTD, PORTB y PORTC 
+
+d) Se necesita conocer las descripciones de los puertos que contienen los registros para configurar y controlar los 
+   pines y los bits de los registros. Esta información se obtiene en los manueles y los esquematicos del 
+   microcontrolador.  
 
 e) El voltaje (tensión electrica/diferencia de potencial) es una magnitud física que cuantifica la diferencia de potencial electrico entre dos puntos. 
-   Si dos puntos que tienen una diferencia de potencial se unen mediante un conductor se producirá un flujo de electrones. 
-   La corriente es un fenómeno físico causado por el desplazamiento de los electrónes. 
+   Si dos puntos que tienen una diferencia de potencial se unen mediante un conductor se producirá un flujo de 
+electrones. 
+   La corriente es un fenómeno físico causado por el desplazamiento de los electrónes.
+
+f) La arquitectura "Harvard" es una arquitectura de computadora con pistas de almacenamiento y de señal
+fisicamente separadas para las instrucciones y para los datos. AVR usa la arquitectura Harvard, que separa
+memorias y buses para programas y datos, es decir separa la memoria de programas de la memoria de datos. 
