@@ -9,13 +9,12 @@
 
 int main(void)
 {
-	led_init(); // configure the red LED control pin
+        led_init(); // configure the red LED control pin
 
-	while (1)
-	{
-		led_toggle(); // change the state of the red LED
-		delay_ms(500);
-	}
+        while (1) {
+                led_toggle(); // change the state of the red LED
+                delay_ms(500);
+        }
 
-	return 0;
+        return 0;
 }
