@@ -5,33 +5,31 @@
  * pines 8-13 de arduino 
  */
 
+void init(void){
+	
+	volatile unsigned char * DDRB = (unsigned char *) 0x24; /* direccion de DDR B (registro de control) */
+	volatile unsigned char * PORTB = (unsigned char *) 0x25; /* direccion de PORTB: SALIDA */
+	*PORTB =*PORTB & ~LED_ROJO; 
+	*DDRB  = DDRB | LED_ROJO;  
+    return; 
+}
 
-/* puertos de E/S */
-volatile unsigned char * puerto_b = (unsigned char *) 0x25; /* direccion de PORTB: SALIDA */
-volatile unsigned char * ddr_b = (unsigned char *) 0x24; /* direccion de DDR B (registro de control) */
-volatile unsigned char * pin_b = (unsigned char *) 0x23; /* direccion PIN B (registro de datos)*/
 
-
-/* 
- * Configuración: Establecer el 5to bit del puerto B como entrada
- *
- * 	Poner en '0' el 5to bit de la dirección 0x24, que 
- * 	es el la dirección del registro de control
- *	(direccion de los datos) del puerto B (DDRB - Data Direction Register).
- *      El 5to bit define la entrada o salida del
- * 	pin del atmega328p que tiene conectado un led en una board arduino
- */
-
-void esperar() {
-	volatile unsigned long i;
+void toggle (void) {
+	volatile unsigned char * PORTB = (unsigned char *) 0x25; 
+	unsigned char e;
 	/* delay de 1 segundo */
-	for (i=0; i<450000; i++);
+	e=*PORTB;
+	e= e ^ LED_ROJO;
+	*PORTB= e;
+        return; 
 }
 
-void prender_led() {
-
+void delay(int ms) {
+	volatile long long i = (long long)milliseconds*CYCLES_PER_MS;
+	while(i!=0){
+		i--;
+	}
+	return;
 }
 
-void apagar_led() {
-
-}
