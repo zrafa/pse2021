@@ -9,9 +9,9 @@
 #define _UTILS_H
 
 
-void esperar();
-void prender_led();
-void apagar_led();
+void init(void);
+void toggle(void);
+void delay(int ms);
 
 
 #endif	/* _UTILS_H */
