@@ -8,9 +8,6 @@
 
 int main(void)
 {
-        char rcvChar = 0;
-
-        /* Configure the UART for the serial driver */
         serial_init();
 
         serial_put_char('s');
@@ -21,18 +18,26 @@ int main(void)
         serial_put_char('\r');
         serial_put_char('\n');
 
+        char rcvChar = 0;
+
         while (rcvChar != 'q') {
-                /* Wait for an incoming character */
+                if (rcvChar == 'c') {
+                        // Blink_led hace 5 parpadeos
+                        blink_led();
+
+                } else if (rcvChar == 'k') {
+                        // Knight_rider da una vuelta
+                        knight_rider();
+                }
+
                 rcvChar = serial_get_char();
 
-                /* Echo the character back along with a carriage return and line feed */
                 serial_put_char(rcvChar);
                 serial_put_char('\r');
                 serial_put_char('\n');
         }
 
-        for (;;)
-                ;
+        for (;;) { }
 
         return 0;
 }
