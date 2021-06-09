@@ -5,8 +5,9 @@
  **********************************************************************/
 
 #include "serial.h"
+#include "utils.h"
 
-int main(void)
+int main()
 {
         serial_init();
 
@@ -22,11 +23,9 @@ int main(void)
 
         while (rcvChar != 'q') {
                 if (rcvChar == 'c') {
-                        // Blink_led hace 5 parpadeos
                         blink_led();
 
                 } else if (rcvChar == 'k') {
-                        // Knight_rider da una vuelta
                         knight_rider();
                 }
 
