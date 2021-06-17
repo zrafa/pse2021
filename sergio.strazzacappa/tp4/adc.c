@@ -17,16 +17,14 @@ volatile adc_t* puerto_adc = (adc_t*)(0x78);
 void adc_init()
 {
         /*
-         * Testear con diferentes voltajes de referencias. Bits 7 y 6.
-         * 
          * Configuración:
          * Voltaje de referencia interno
          * Ajustado a derecha
          * Canal usado: ADC0
          * 
-         * ADMUX = 1111 0000
+         * ADMUX = 1100 0000
          */
-        puerto_adc->admux = 0xf0;
+        puerto_adc->admux = 0xc0;
 
         /*
          * ADCSRA = 1000 0111
@@ -39,9 +37,9 @@ int adc_get(char input)
         int val;
 
         puerto_adc->admux |= input; // Cambió el canal de entrada a input
-        puerto_adc->adcsra != (1 << 6); // Inicia conversión
+        puerto_adc->adcsra |= (1 << 6); // Inicia conversión
 
-        while (!(puerto_adc->adcsra & (1 << 6))) { }
+        while ((puerto_adc->adcsra & (1 << 6))) { }
 
         // Convierte el valor leído en los 2 registros a decimal
         val = puerto_adc->adc_l;
