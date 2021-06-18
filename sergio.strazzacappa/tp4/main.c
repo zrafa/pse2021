@@ -42,10 +42,68 @@ void print(char string[], int len)
         }
 }
 
+void toggle_leds(char number[], char scale[])
+{
+        print("VALOR = ", 8);
+        print(number, 4);
+        print(" - ", 3);
+        print("ESCALA = ", 9);
+        print(scale, 1);
+        print("\r\n", 2);
+
+        switch (scale[0]) {
+        case '0':
+                led_toggle(-1, 0);
+                led_toggle(-1, 1);
+                led_toggle(-1, 2);
+                break;
+        case '1':
+                led_toggle(-1, 0);
+                led_toggle(-1, 1);
+                led_toggle(2, -1);
+                break;
+        case '2':
+                led_toggle(-1, 0);
+                led_toggle(1, -1);
+                led_toggle(-1, 2);
+                break;
+        case '3':
+                led_toggle(-1, 0);
+                led_toggle(1, -1);
+                led_toggle(2, -1);
+                break;
+        case '4':
+                led_toggle(0, -1);
+                led_toggle(-1, 1);
+                led_toggle(-1, 2);
+                break;
+        case '5':
+                led_toggle(0, -1);
+                led_toggle(-1, 1);
+                led_toggle(2, -1);
+                break;
+        case '6':
+                led_toggle(0, -1);
+                led_toggle(1, -1);
+                led_toggle(-1, 2);
+                break;
+        case '7':
+                led_toggle(0, -1);
+                led_toggle(1, -1);
+                led_toggle(2, -1);
+                break;
+
+        default:
+                print("ERROR LEDS", 10);
+                break;
+        }
+}
+
 int main()
 {
         int val;
 
+        led_init();
         serial_init();
         adc_init();
 
@@ -56,15 +114,8 @@ int main()
                 val = adc_get(0);
                 int_to_string(val, number);
                 to_scale(val, scale);
-
-                print("VALOR = ", 8);
-                print(number, 4);
-                print(" - ", 3);
-                print("ESCALA = ", 9);
-                print(scale, 1);
-                print("\r\n", 2);
-
-                delay_ms(2000);
+                toggle_leds(number, scale);
+                delay_ms(1000);
         }
 
         for (;;) { }
