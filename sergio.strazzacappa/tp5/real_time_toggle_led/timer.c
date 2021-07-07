@@ -37,6 +37,7 @@ volatile unsigned char* timer0_timsk0 = (unsigned char*)(0x6e);
 
 void timer0_init()
 {
+        sei();
         timer0->tccr0a |= TIMER0_CTC; /* setea el modo a CTC */
         timer0->tccr0b |= TIMER0_CS; /* setea el prescalar a 64 */
         timer0->ocr0a = TIMER0_OCR0A; /* valor con el cual comprarar */
