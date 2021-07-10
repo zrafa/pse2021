@@ -1,3 +1,4 @@
+#include "serial.h"
 #include "utils.h"
 #include <avr/interrupt.h>
 #include <avr/io.h>
@@ -11,6 +12,7 @@
 
 unsigned int ticks = 0;
 unsigned int toggle = 1;
+unsigned int seconds = 0;
 
 ISR(TIMER0_COMPA_vect)
 {
@@ -19,6 +21,7 @@ ISR(TIMER0_COMPA_vect)
         if (ticks == 1000) {
                 ticks = 0;
                 toggle = 1;
+                seconds++;
         }
 }
 
@@ -44,10 +47,14 @@ void timer0_init()
         (*timer0_timsk0) |= 0x02; /* habilita las interrupciones al comparar con el registro ocr0a */
 }
 
-void timer0_exec()
+void int_to_string(int val, char number[])
 {
-        if (ticks == 0 && toggle) {
-                led_toggle();
-                toggle = 0;
+        int i = 3;
+
+        while (val > 0) {
+                int digit = val % 10;
+                val /= 10;
+                number[i] = 48 + digit;
+                i--;
         }
 }
