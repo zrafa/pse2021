@@ -34,11 +34,9 @@ struct fecha {
 } fecha_actual;
 
 unsigned int ticks;
-unsigned int interrupted;
 
 void timer0_init()
 {
-        interrupted = 1;
         ticks = 0;
         sei();
         timer0->tccr0a |= TIMER0_CTC; /* setea el modo a CTC */
@@ -124,7 +122,6 @@ ISR(TIMER0_COMPA_vect)
         ticks++;
 
         if (ticks == 1000) {
-                interrupted = 1;
                 ticks = 0;
                 set_time();
         }

@@ -1,6 +1,7 @@
 #include "serial.h"
 #include "timer.h"
 #include "utils.h"
+#include <avr/interrupt.h>
 
 extern unsigned int ticks;
 extern unsigned int toggle;
@@ -19,7 +20,10 @@ int main()
                         int_to_string(seconds, time);
                         print(time, 5);
                         led_toggle();
+
+                        cli();
                         toggle = 0;
+                        sei();
                 }
         }
 

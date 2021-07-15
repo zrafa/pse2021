@@ -8,8 +8,6 @@ int main()
         timer0_init();
         fecha_set(0, 0, 0, 0, 0, 0);
 
-        extern unsigned int interrupted;
-
         while (get_segundo() == 0) {
                 serial_put_char('A');
                 cant_serial++;

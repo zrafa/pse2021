@@ -1,8 +1,6 @@
 #ifndef _TIMER_
 #define _TIMER_
 
-extern unsigned int interrupted;
-
 void set_mes();
 void set_dia();
 void set_hora();

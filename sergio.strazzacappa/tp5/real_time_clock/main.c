@@ -1,5 +1,6 @@
 #include "serial.h"
 #include "timer.h"
+#include <avr/interrupt.h>
 
 int main()
 {
@@ -10,11 +11,13 @@ int main()
         extern unsigned int interrupted;
 
         while (1) {
-                //print_number(interrupted, 1);
                 print("", 0);
                 if (interrupted) {
                         mostrar_fecha();
+
+                        cli();
                         interrupted = 0;
+                        sei();
                 }
         }
 
